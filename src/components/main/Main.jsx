@@ -10,12 +10,12 @@ import {setCurrentPage} from "../../toolkitRedux/toolkitReposReducer";
 
 const Main = () => {
     const dispatch = useDispatch()
-    const repos = useSelector(state => state.toolkit.items)
-    const isFetching = useSelector(state => state.toolkit.isFetching)
-    const currentPage = useSelector(state => state.toolkit.currentPage)
-    const totalCount = useSelector(state => state.toolkit.totalCount)
-    const perPage = useSelector(state => state.toolkit.perPage)
-    const isFetchError = useSelector(state => state.toolkit.isFetchError)
+    const repos = useSelector(state => state.toolkitRepos.items)
+    const isFetching = useSelector(state => state.toolkitRepos.isFetching)
+    const currentPage = useSelector(state => state.toolkitRepos.currentPage)
+    const totalCount = useSelector(state => state.toolkitRepos.totalCount)
+    const perPage = useSelector(state => state.toolkitRepos.perPage)
+    const isFetchError = useSelector(state => state.toolkitRepos.isFetchError)
     const [searchValue, setSearchValue] = useState("")
     const pagesCount = Math.ceil(totalCount / perPage)
 
