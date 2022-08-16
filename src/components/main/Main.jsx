@@ -3,18 +3,19 @@ import './main.less'
 import {useDispatch, useSelector} from "react-redux";
 import {getRepos} from "../actions/repos";
 import Repo from "./repo/Repo";
-import {setCurrentPage} from "../../reducers/reposReducer";
+/*import {setCurrentPage} from "../../redux/reposReducer";*/
 import {createPages} from "../../utils/pagesCreator";
 import {Navigate, useNavigate} from "react-router-dom";
+import {setCurrentPage} from "../../toolkitRedux/toolkitReposReducer";
 
 const Main = () => {
     const dispatch = useDispatch()
-    const repos = useSelector(state => state.repos.items)
-    const isFetching = useSelector(state => state.repos.isFetching)
-    const currentPage = useSelector(state => state.repos.currentPage)
-    const totalCount = useSelector(state => state.repos.totalCount)
-    const perPage = useSelector(state => state.repos.perPage)
-    const isFetchError = useSelector(state => state.repos.isFetchError)
+    const repos = useSelector(state => state.toolkit.items)
+    const isFetching = useSelector(state => state.toolkit.isFetching)
+    const currentPage = useSelector(state => state.toolkit.currentPage)
+    const totalCount = useSelector(state => state.toolkit.totalCount)
+    const perPage = useSelector(state => state.toolkit.perPage)
+    const isFetchError = useSelector(state => state.toolkit.isFetchError)
     const [searchValue, setSearchValue] = useState("")
     const pagesCount = Math.ceil(totalCount / perPage)
 

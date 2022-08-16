@@ -8,8 +8,6 @@ import Card from "./card/Card";
 import Error from "./main/Error";
 
 const App = () => {
-    const dispatch = useDispatch()
-
 
     return (
         <BrowserRouter>
