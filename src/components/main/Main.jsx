@@ -12,16 +12,11 @@ const Main = () => {
     const isFetching = useSelector(state => state.repos.isFetching)
     const currentPage = useSelector(state => state.repos.currentPage)
     const totalCount = useSelector(state => state.repos.totalCount)
-    console.log("totalCount: " + totalCount)
     const perPage = useSelector(state => state.repos.perPage)
-    console.log("perPage: " + perPage)
     const [searchValue, setSearchValue] = useState("")
     const pagesCount = Math.ceil(totalCount / perPage)
     const pages = []
     createPages(pages, pagesCount, currentPage)
-    console.log("pagesCount: " + pagesCount)
-    console.log("currentPage: " + currentPage)
-    console.log(pages)
 
     useEffect(() => {
         dispatch(getRepos(searchValue, currentPage, perPage))

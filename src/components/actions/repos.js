@@ -9,7 +9,6 @@ export const getRepos = (searchQuery = "A", currentPage, perPage) => {
     return async (dispatch) => {
         dispatch(setIsFetching(true))
         const response = await axios.get('https://api.github.com/search/repositories',
-            //https://api.github.com/users/schacon/repos
             {
                 params: {
                     q: searchQuery,
@@ -20,4 +19,22 @@ export const getRepos = (searchQuery = "A", currentPage, perPage) => {
             })
         dispatch(setRepos(response.data))
     }
+}
+
+export const getCurrentRepo = async (username, reponame, setRepo) => {
+    console.log(username, reponame)
+    const response = await axios.get('https://api.github.com/repos/' + username+ '/' + reponame)
+    setRepo(response.data)
+}
+
+export const getContributors = async (username, reponame, setContributors) => {
+    console.log(username, reponame)
+    const response = await axios.get('https://api.github.com/repos/' + username+ '/' + reponame + '/contributors',
+        {
+            params: {
+                page: 1,
+                per_page: 10,
+            }
+        })
+    setContributors(response.data)
 }
