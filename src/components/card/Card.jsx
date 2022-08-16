@@ -4,14 +4,14 @@ import {getContributors, getCurrentRepo} from "../actions/repos";
 import './card.less'
 const Card = (props) => {
     const navigate = useNavigate()
-    const {username, reponame} = useParams()
+    const {username, repoName} = useParams()
     const [repo, setRepo] = useState({owner:{}})
     const [contributors, setContributors] = useState([])
     useEffect(()=>{
-        getCurrentRepo(username, reponame, setRepo)
-        getContributors(username, reponame, setContributors)
+        getCurrentRepo(username, repoName, setRepo)
+        getContributors(username, repoName, setContributors)
     }, [])
-    console.log(username, reponame)
+    console.log(username, repoName)
     const goBack = () => {
         navigate(-1)
     }

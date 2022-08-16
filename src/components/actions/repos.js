@@ -1,5 +1,10 @@
 import axios from "axios";
-import {setIsFetching, setRepos} from "../../reducers/reposReducer";
+import {setFetchError, setIsFetching, setRepos} from "../../reducers/reposReducer";
+
+const baseUrl = 'https://api.github.com/'
+const instance = axios.create({
+
+})
 
 export const getRepos = (searchQuery = "A", currentPage, perPage) => {
     if (searchQuery === "")
@@ -7,29 +12,36 @@ export const getRepos = (searchQuery = "A", currentPage, perPage) => {
         searchQuery = "A"
     }
     return async (dispatch) => {
-        dispatch(setIsFetching(true))
-        const response = await axios.get('https://api.github.com/search/repositories',
-            {
-                params: {
-                    q: searchQuery,
-                    sort: "stars",
-                    per_page: perPage,
-                    page: currentPage,
-                }
-            })
-        dispatch(setRepos(response.data))
+        try {
+            dispatch(setIsFetching(true))
+            const response = await instance.get(baseUrl + 'search/repositories',
+                {
+                    params: {
+                        q: searchQuery,
+                        sort: "stars",
+                        per_page: perPage,
+                        page: currentPage,
+                    }
+                })
+            dispatch(setRepos(response.data))
+        } catch (e) {
+            console.log("Error")
+            dispatch(setFetchError(true))
+            dispatch(setIsFetching(false))
+        }
+
     }
 }
 
-export const getCurrentRepo = async (username, reponame, setRepo) => {
-    console.log(username, reponame)
-    const response = await axios.get('https://api.github.com/repos/' + username+ '/' + reponame)
+export const getCurrentRepo = async (username, repoName, setRepo) => {
+    console.log(username, repoName)
+    const response = await instance.get(baseUrl + 'repos/' + username+ '/' + repoName)
     setRepo(response.data)
 }
 
-export const getContributors = async (username, reponame, setContributors) => {
-    console.log(username, reponame)
-    const response = await axios.get('https://api.github.com/repos/' + username+ '/' + reponame + '/contributors',
+export const getContributors = async (username, repoName, setContributors) => {
+    console.log(username, repoName)
+    const response = await instance.get(baseUrl + 'repos/' + username+ '/' + repoName + '/contributors',
         {
             params: {
                 page: 1,
