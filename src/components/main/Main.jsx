@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import './main.less'
+import './main.module.less'
 import {useDispatch, useSelector} from "react-redux";
 import {getRepos} from "../actions/repos";
 import Repo from "./repo/Repo";
-/*import {setCurrentPage} from "../../redux/_reposReducer";*/
 import {createPages} from "../../utils/pagesCreator";
 import {Navigate, useNavigate} from "react-router-dom";
 import {setCurrentPage} from "../../toolkitRedux/toolkitSliceReposReducer";
-/*import {setCurrentPage} from "../../toolkitRedux/toolkitReposReducer";*/
+import styles from './main.module.less'
 
 const Main = () => {
     const dispatch = useDispatch()
@@ -42,10 +41,10 @@ const Main = () => {
 
     return (
         <div>
-            <div className="search">
+            <div className={styles.search}>
                 <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} type="text"
-                       placeholder="input repo name" className="search-input"/>
-                <button onClick={() => searchHandler()} className="search-btn">Search</button>
+                       placeholder="input repo name" className={styles.searchInput}/>
+                <button onClick={() => searchHandler()} className={styles.searchBtn}>Search</button>
             </div>
             {
                 isFetching === false
@@ -53,15 +52,15 @@ const Main = () => {
                     repos.map(repo =>
                         <Repo repo={repo} key={repo.id}/>)
                     :
-                    <div className="fetching">
+                    <div className={styles.fetching}>
 
                     </div>
             }
-            <div className="pages">
+            <div className={styles.pages}>
                 {
                     pages.map((page, index) =>
                         <span
-                            className={currentPage === page ? "current-page" : "page"}
+                            className={currentPage === page ? styles.currentPage : styles.page}
                             key={index}
                             onClick={()=> dispatch(setCurrentPage(page))}
                         >{page}</span>)

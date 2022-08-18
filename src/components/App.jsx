@@ -1,5 +1,5 @@
 import React from 'react';
-import "./app.less"
+import styles from"./app.module.less"
 import {useDispatch} from "react-redux";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 
@@ -11,7 +11,7 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div className="container">
+            <div className={styles.container}>
                 <Routes>
                     <Route exact path="/" element={<Main/>}/>
                     <Route path="/card/:username/:repoName" element={<Card/>}/>

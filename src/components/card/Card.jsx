@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {getContributors, getCurrentRepo} from "../actions/repos";
-import './card.less'
+import styles from './card.module.less'
 const Card = (props) => {
     const navigate = useNavigate()
     const {username, repoName} = useParams()
@@ -17,11 +17,11 @@ const Card = (props) => {
     }
     return (
         <div>
-            <button onClick={goBack} className="back-btn">BACK</button>
-            <div className="card">
+            <button onClick={goBack} className={styles.backBtn}>BACK</button>
+            <div className={styles.card}>
                 <img src={repo.owner.avatar_url} alt=""/>
-                <div className="name">{repo.name}</div>
-                <div className="stars">{repo.stargazers_count}</div>
+                <div className={styles.name}>{repo.name}</div>
+                <div className={styles.stars}>{repo.stargazers_count}</div>
             </div>
             {contributors.map((c, index) =>
                 <div>{index + 1}. {c.login}</div>
