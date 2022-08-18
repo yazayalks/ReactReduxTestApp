@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from"./app.module.less"
+import styles from "./app.module.less"
 import {useDispatch} from "react-redux";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 
-import Main from "./main/Main";
-import Card from "./card/Card";
-import Error from "./main/Error";
+import Main from "../main/Main";
+import Card from "../card/Card";
+import Error from "../main/Error";
 
 const App = () => {
 
