@@ -1,6 +1,7 @@
 import axios from "axios";
-import {setFetchError, setIsFetching, setRepos} from "../../toolkitRedux/toolkitReposReducer";
-/*import {setFetchError, setIsFetching, setRepos} from "../../redux/reposReducer";*/
+import {setFetchError, setIsFetching, setRepos} from "../../toolkitRedux/toolkitSliceReposReducer";
+/*import {setFetchError, setIsFetching, setRepos} from "../../toolkitRedux/toolkitReposReducer";*/
+/*import {setFetchError, setIsFetching, setRepos} from "../../redux/_reposReducer";*/
 
 const baseUrl = 'https://api.github.com/'
 const instance = axios.create({

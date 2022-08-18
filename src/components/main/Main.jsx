@@ -3,19 +3,20 @@ import './main.less'
 import {useDispatch, useSelector} from "react-redux";
 import {getRepos} from "../actions/repos";
 import Repo from "./repo/Repo";
-/*import {setCurrentPage} from "../../redux/reposReducer";*/
+/*import {setCurrentPage} from "../../redux/_reposReducer";*/
 import {createPages} from "../../utils/pagesCreator";
 import {Navigate, useNavigate} from "react-router-dom";
-import {setCurrentPage} from "../../toolkitRedux/toolkitReposReducer";
+import {setCurrentPage} from "../../toolkitRedux/toolkitSliceReposReducer";
+/*import {setCurrentPage} from "../../toolkitRedux/toolkitReposReducer";*/
 
 const Main = () => {
     const dispatch = useDispatch()
-    const repos = useSelector(state => state.toolkitRepos.items)
-    const isFetching = useSelector(state => state.toolkitRepos.isFetching)
-    const currentPage = useSelector(state => state.toolkitRepos.currentPage)
-    const totalCount = useSelector(state => state.toolkitRepos.totalCount)
-    const perPage = useSelector(state => state.toolkitRepos.perPage)
-    const isFetchError = useSelector(state => state.toolkitRepos.isFetchError)
+    const repos = useSelector(state => state.sliceRepos.items)
+    const isFetching = useSelector(state => state.sliceRepos.isFetching)
+    const currentPage = useSelector(state => state.sliceRepos.currentPage)
+    const totalCount = useSelector(state => state.sliceRepos.totalCount)
+    const perPage = useSelector(state => state.sliceRepos.perPage)
+    const isFetchError = useSelector(state => state.sliceRepos.isFetchError)
     const [searchValue, setSearchValue] = useState("")
     const pagesCount = Math.ceil(totalCount / perPage)
 

@@ -10,10 +10,10 @@ const initialState = {
     isFetchError: false,
 }
 
-export const setRepos = createAction('SET_REPOS')
-export const setIsFetching = createAction('SET_IS_FETCHING')
-export const setCurrentPage = createAction('SET_CURRENT_PAGE')
-export const setFetchError = createAction('SET_FETCH_ERROR')
+const setRepos = createAction('SET_REPOS')
+const setIsFetching = createAction('SET_IS_FETCHING')
+const setCurrentPage = createAction('SET_CURRENT_PAGE')
+const setFetchError = createAction('SET_FETCH_ERROR')
 
 export default createReducer(initialState, {
     [setRepos]: (state, action) => {

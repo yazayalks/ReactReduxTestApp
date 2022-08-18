@@ -1,8 +1,9 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import toolkitReposReducer from "./toolkitReposReducer";
+import toolkitReposReducer from "./_toolkitReposReducer";
+import sliceReposReducer from './toolkitSliceReposReducer'
 
 const rootReducer = combineReducers({
-    toolkitRepos: toolkitReposReducer,
+    sliceRepos: sliceReposReducer
 })
 
 export const store = configureStore({

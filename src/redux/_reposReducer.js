@@ -12,7 +12,7 @@ const defaultState = {
     isFetchError: false,
 }
 
-export default function reposReducer(state = defaultState, action) {
+export default function _reposReducer(state = defaultState, action) {
     switch (action.type) {
         case SET_REPOS:
             return {
